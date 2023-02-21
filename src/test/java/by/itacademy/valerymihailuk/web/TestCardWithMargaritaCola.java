@@ -1,6 +1,5 @@
 package by.itacademy.valerymihailuk.web;
 
-
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,13 +8,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
-public class TestCartWithMargarita {
+public class TestCardWithMargaritaCola {
     WebDriver driver;
 
     @BeforeEach
     public void openTerrapizza() {
 
-        driver = new ChromeDriver();
+        WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         driver.get(TerrapizzaPage.URL);
@@ -27,10 +26,16 @@ public class TestCartWithMargarita {
         catalogPizza.click();
         WebElement margarita = driver.findElement(By.xpath(TerrapizzaPage.MARGARITA_IN_PIZZA));
         margarita.click();
+        WebElement beverages = driver.findElement(By.xpath(TerrapizzaPage.PAGE_BEVERAGES));
+        beverages.click();
+        WebElement colaInBeverages =driver.findElement(By.xpath(TerrapizzaPage.COLA_IN_BEVERAGES));
+        colaInBeverages.click();
         WebElement card = driver.findElement(By.xpath(TerrapizzaPage.CARD));
         card.click();
         WebElement cardWithMargarita = driver.findElement(By.xpath(TerrapizzaPage.MARGARITA_IN_CARD));
         Assertions.assertEquals("Пицца Маргарита", cardWithMargarita);
+        WebElement cardWithCola = driver.findElement(By.xpath(TerrapizzaPage.COLA_IN_CARD));
+        Assertions.assertEquals("",cardWithCola);
     }
 
     @AfterEach
