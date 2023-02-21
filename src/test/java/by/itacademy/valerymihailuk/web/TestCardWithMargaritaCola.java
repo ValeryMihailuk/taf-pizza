@@ -7,39 +7,42 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 public class TestCardWithMargaritaCola {
     WebDriver driver;
 
     @BeforeEach
-    public void openTerrapizza() {
+    public void openTerrapizza2() {
 
-        WebDriver driver = new ChromeDriver();
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(TerrapizzaPage.URL);
+        WebElement btmCookies = driver.findElement(By.xpath(TerrapizzaPage.COOKIES_CLICK));
+        btmCookies.click();
     }
 
     @Test
-    public void testCard() {
+    public void testCard2() {
         WebElement catalogPizza = driver.findElement(By.xpath(TerrapizzaPage.PAGE_PIZZA));
         catalogPizza.click();
         WebElement margarita = driver.findElement(By.xpath(TerrapizzaPage.MARGARITA_IN_PIZZA));
         margarita.click();
-        WebElement beverages = driver.findElement(By.xpath(TerrapizzaPage.PAGE_BEVERAGES));
+        WebElement beverages = driver.findElement(By.xpath(TerrapizzaPage.PAGE_BAR));
         beverages.click();
-        WebElement colaInBeverages =driver.findElement(By.xpath(TerrapizzaPage.COLA_IN_BEVERAGES));
-        colaInBeverages.click();
+        WebElement colaInCard =driver.findElement(By.xpath(TerrapizzaPage.COLA_IN_BAR));
+        colaInCard.click();
         WebElement card = driver.findElement(By.xpath(TerrapizzaPage.CARD));
         card.click();
         WebElement cardWithMargarita = driver.findElement(By.xpath(TerrapizzaPage.MARGARITA_IN_CARD));
-        Assertions.assertEquals("Пицца Маргарита", cardWithMargarita);
+        Assertions.assertEquals("Пицца Маргарита Классическая 32 см", cardWithMargarita.getText());
         WebElement cardWithCola = driver.findElement(By.xpath(TerrapizzaPage.COLA_IN_CARD));
-        Assertions.assertEquals("",cardWithCola);
+        Assertions.assertEquals("Pepsi (Беларусь)",cardWithCola.getText());
     }
 
     @AfterEach
-    public void closeTestTerraPizza() {
+    public void closeTestTerraPizza2() {
         driver.quit();
     }
 }
