@@ -16,20 +16,22 @@ public class TestCartWithMargarita {
     public void openTerrapizza() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get(TerrapizzaPage.URL);
     }
 
     @Test
     public void testCard() {
+        WebElement btmCookies = driver.findElement(By.xpath(TerrapizzaPage.COOKIES_CLICK));
+        btmCookies.click();
         WebElement catalogPizza = driver.findElement(By.xpath(TerrapizzaPage.PAGE_PIZZA));
-        catalogPizza.();
+        catalogPizza.click();
         WebElement margarita = driver.findElement(By.xpath(TerrapizzaPage.MARGARITA_IN_PIZZA));
         margarita.click();
         WebElement card = driver.findElement(By.xpath(TerrapizzaPage.CARD));
         card.click();
         WebElement cardWithMargarita = driver.findElement(By.xpath(TerrapizzaPage.MARGARITA_IN_CARD));
-        Assertions.assertEquals("Пицца Маргарита", cardWithMargarita.getText());
+        Assertions.assertEquals("Пицца Маргарита Классическая 32 см", cardWithMargarita.getText());
     }
 
     @AfterEach
