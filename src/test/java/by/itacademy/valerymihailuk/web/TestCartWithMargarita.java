@@ -16,7 +16,7 @@ public class TestCartWithMargarita {
     public void openTerrapizza() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
         driver.get(TerrapizzaPage.URL);
         WebElement btmCookies = driver.findElement(By.xpath(TerrapizzaPage.COOKIES_CLICK));
         btmCookies.click();

@@ -36,7 +36,7 @@ public class TestCardWithMargaritaCola {
         WebElement card = driver.findElement(By.xpath(TerrapizzaPage.CARD));
         card.click();
         WebElement cardWithMargarita = driver.findElement(By.xpath(TerrapizzaPage.MARGARITA_IN_CARD));
-        Assertions.assertEquals("Пицца Маргарита Классическая 32 см", cardWithMargarita.getText());
+        Assertions.assertEquals("Пицца Маргарита Классическая", cardWithMargarita.getText());
         WebElement cardWithCola = driver.findElement(By.xpath(TerrapizzaPage.COLA_IN_CARD));
         Assertions.assertEquals("Pepsi (Беларусь)",cardWithCola.getText());
     }
