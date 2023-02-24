@@ -19,9 +19,4 @@ public class Util {
 
         }
     }
-
-    public static void waitForPresenceElementXPath(WebDriver driver, String xPath, int millis) {
-        new WebDriverWait(driver, Duration.ofMillis(millis))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(xPath)));
-    }
 }
