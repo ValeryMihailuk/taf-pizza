@@ -30,9 +30,28 @@ public class TestCartWithMargarita {
         margarita.click();
         WebElement card = driver.findElement(By.xpath(TerrapizzaPage.CARD));
         card.click();
+        Util.waitForPresenceElementXPath(driver,);
         WebElement cardWithMargarita = driver.findElement(By.xpath(TerrapizzaPage.MARGARITA_IN_CARD));
         Assertions.assertEquals("Пицца Маргарита Классическая 32 см", cardWithMargarita.getText());
     }
+    @Test
+    public void testCardMargaritaWithPepsi() {
+        WebElement catalogPizza = driver.findElement(By.xpath(TerrapizzaPage.PAGE_PIZZA));
+        catalogPizza.click();
+        WebElement margarita = driver.findElement(By.xpath(TerrapizzaPage.MARGARITA_IN_PIZZA));
+        margarita.click();
+        WebElement beverages = driver.findElement(By.xpath(TerrapizzaPage.PAGE_BAR));
+        beverages.click();
+        WebElement colaInCard =driver.findElement(By.xpath(TerrapizzaPage.COLA_IN_BAR));
+        colaInCard.click();
+        WebElement card = driver.findElement(By.xpath(TerrapizzaPage.CARD));
+        card.click();
+        WebElement cardWithMargarita = driver.findElement(By.xpath(TerrapizzaPage.MARGARITA_IN_CARD));
+        Assertions.assertEquals("Пицца Маргарита Классическая", cardWithMargarita.getText());
+        WebElement cardWithCola = driver.findElement(By.xpath(TerrapizzaPage.COLA_IN_CARD));
+        Assertions.assertEquals("Pepsi (Беларусь)",cardWithCola.getText());
+    }
+
 
 
     @AfterEach
