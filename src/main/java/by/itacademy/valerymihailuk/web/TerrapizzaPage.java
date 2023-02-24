@@ -2,7 +2,7 @@ package by.itacademy.valerymihailuk.web;
 
 public class TerrapizzaPage {
     public static final String URL = "https://terrapizza.by/";
-    public static final String COOKIES_CLICK="/html/body/div[6]/div/button";
+    public static final String COOKIES_CLICK="//button [@class=\"close-icon\"]";
     public static final String PAGE_PIZZA = "//li[10]/a [@href =\"/catalog/picca\"]";
     public static final String MARGARITA_IN_PIZZA = "//div/button [@data-id=\"364\"]";
     public static final String CARD = "//div [@class=\"basket__btn-top basket__top basket__btn-top--sm\"]";
